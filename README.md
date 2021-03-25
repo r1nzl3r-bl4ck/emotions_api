@@ -58,4 +58,6 @@ Or with your web browser going to http://localhost/ad_stats/445534 and you shoul
 
 `{"ad_id":"445534","emoji":"bad","num_contacts":46,"num_views":19,"version":"1.0"}`
 
+## Helm 
 
+The helm chart for this project is in the emotions-api directory so you can install it by clonning this repo and run helm install command locally.
