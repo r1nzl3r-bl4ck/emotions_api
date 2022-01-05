@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip install --upgrade pip && pip3 install -r requirements.txt --user'
+                sh 'sudo pip3 install --upgrade pip3 && sudo pip3 install -r requirements.txt --user'
             }
         }
         stage('Docker Build & Push') {
