@@ -15,6 +15,9 @@ pipeline {
             }
         }
         stage('Docker Build & Push') {
+            environment {
+              gitcommit = "${gitcommit}"
+            }
             steps {
                 script {
                   docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
@@ -26,3 +29,4 @@ pipeline {
         }
     }
 }
+
