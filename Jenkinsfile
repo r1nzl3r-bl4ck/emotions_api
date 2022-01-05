@@ -1,14 +1,14 @@
 pipeline {
     agent {
         docker {
-            image 'python:3.7.2'
+            image 'python:3'
         }
     }
     stages {
         stage('Build') {
             steps {
-                sh 'sudo pip3 install --upgrade pip3'
-                sh 'sudo pip3 install -r requirements.txt --user'
+                sh 'pip install --upgrade pip'
+                sh 'pip install -r requirements.txt --user'
             }
         }
         stage('Docker Build & Push') {
@@ -23,8 +23,3 @@ pipeline {
         }
     }
 }
-
-
-
-
-
