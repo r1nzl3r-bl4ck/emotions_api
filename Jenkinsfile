@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        gitcommit = "${gitcommit}"
+    }
     stages {
         stage('Build') {
             agent {
@@ -15,13 +18,11 @@ pipeline {
             }
         }
         stage('Docker Build & Push') {
-            environment {
-              gitcommit = "${gitcommit}"
-            }
             steps {
+                sh 'echo ${gitcommit}'
                 script {
                   docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
-                    def apppythonjenkins = docker.build("r1nzler/emotions-api:${gitcommit}", ".")
+                    def apppythonjenkins = docker.build("r1nzler/emotions-api:latest", ".")
                     apppythonjenkins.push()
                   }
                 }
