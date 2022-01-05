@@ -7,9 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'python3 -m venv env'
-                sh '. ./env/bin/activate'
-                sh 'python -m pip install --user -r requirements.txt'
+                sh 'pip install --user -r requirements.txt'
             }
         }
         stage('Docker Build & Push') {
