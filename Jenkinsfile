@@ -3,9 +3,9 @@ pipeline {
         docker {
             image 'python:3'
         }
+    }
     environment {
         HOME = "${env.WORKSPACE}"
-    }
     }
     stages {
         stage('Build') {
