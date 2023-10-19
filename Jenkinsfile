@@ -21,7 +21,7 @@ pipeline {
                 echo "Workspace is $WORKSPACE"
                 dir("$WORKSPACE") {
                     script {
-                        docker.withDockerRegistry('https://index.docker.io/v1/', 'DockerHub') {
+                        docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
                             def image = docker.build('r1nzler/emotions-api:latest')
                             image.push()
                         }
