@@ -29,6 +29,13 @@ pipeline {
                 }
             }
         }
+        stage('Run Trivy') {
+            steps {
+                sh(script: '''
+                trivy image r1nzler/emotions-api
+                ''')
+            }
+        }
     }
 }
 
