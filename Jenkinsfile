@@ -29,13 +29,11 @@ pipeline {
                 }
             }
         }
-        stage('Container Scanning') {
-            stage('Run Trivy') {
-               steps {
-                  sh(script: '''
-                  trivy image r1nzler/emotions-api
-                  ''')
-               }
+        stage('Run Trivy') {
+            steps {
+                sh(script: '''
+                trivy image r1nzler/emotions-api
+                ''')
             }
         }
     }
