@@ -32,10 +32,12 @@ pipeline {
         stage('Run Trivy') {
             steps {
                 sh(script: '''
-                trivy image r1nzler/emotions-api
+                // Scan again and fail on CRITICAL vulns
+                trivy image --severity CRITICAL r1nzler/emotions-api
                 ''')
             }
         }
     }
 }
+
 
