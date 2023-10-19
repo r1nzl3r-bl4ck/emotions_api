@@ -8,11 +8,11 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh(script: 'docker images -a')
+                sh(script: '/usr/bin/docker images -a')
                 sh(script: '''
-                docker images -a
-                docker build -t emotions-api .
-                docker images -a
+                /usr/bin/docker images -a
+                /usr/bin/docker build -t emotions-api .
+                /usr/bin/docker images -a
                 ''')
             }
         }
