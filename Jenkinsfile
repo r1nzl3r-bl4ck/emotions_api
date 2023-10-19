@@ -32,7 +32,7 @@ pipeline {
         stage('Run Trivy') {
             steps {
                 sh(script: '''
-                trivy image --severity CRITICAL r1nzler/emotions-api
+                trivy image --exit-code 1 --severity CRITICAL r1nzler/emotions-api
                 ''')
             }
         }
