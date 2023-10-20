@@ -27,7 +27,7 @@ pipeline {
         stage('Push Container') {
             steps{
                 environment {
-                    GIT_COMMIT = sh(returnStdout: true, script: "git rev-parse --short=10 HEAD")
+                    GIT_COMMIT = 'sh(returnStdout: true, script: "git rev-parse --short=10 HEAD")'
                 }
                 echo "Workspace is $GIT_COMMIT"
                 echo "Current TAG is $tag"
