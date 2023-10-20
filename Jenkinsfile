@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        tag_long = sh(returnStdout: true, script: "git rev-parse --short=10 HEAD")
+        tag_long = sh(returnStdout: true, script: "git rev-parse HEAD")
         tag_short = sh(returnStdout: true, script: "git rev-parse --short=10 HEAD")
         tag_opt = sh(returnStdout: true, script: "git rev-parse --short=10 HEAD").trim()
     }
