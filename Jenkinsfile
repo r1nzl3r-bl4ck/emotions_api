@@ -27,6 +27,7 @@ pipeline {
         stage('Push Container') {
             steps{
                 echo "Workspace is $WORKSPACE"
+                echo "Current TAG is $tag"
                 dir("$WORKSPACE") {
                     script {
                         docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
