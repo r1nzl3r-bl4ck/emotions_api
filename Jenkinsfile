@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Printing the TAG') {
             steps {
-                echo "${var.tag}"
+                echo "$tag"
             }
         }
         stage('Docker Build') {
