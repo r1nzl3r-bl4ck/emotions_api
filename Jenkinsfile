@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
+        tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD")
     }
     stages {
         stage('Verify Branch') {
