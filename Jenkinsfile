@@ -1,9 +1,17 @@
 pipeline {
     agent any
+    environment {
+        tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
+    }
     stages {
         stage('Verify Branch') {
             steps {
                 echo "$GIT_BRANCH"
+            }
+        }
+        stage('Printing the TAG') {
+            steps {
+                echo "${var.tag}"
             }
         }
         stage('Docker Build') {
