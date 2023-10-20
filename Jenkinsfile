@@ -30,7 +30,7 @@ pipeline {
                 dir("$WORKSPACE") {
                     script {
                         docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
-                            def image = docker.build('r1nzler/emotions-api:${env.tag}')
+                            def image = docker.build('r1nzler/emotions-api:${env.BUILD_TAG}')
                             image.push()
                         }
                     }
