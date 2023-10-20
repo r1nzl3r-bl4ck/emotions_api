@@ -26,15 +26,12 @@ pipeline {
         }
         stage('Push Container') {
             steps{
-                environment {
-                    GIT_COMMIT = 'sh(returnStdout: true, script: "git rev-parse --short=10 HEAD")'
-                }
-                echo "Workspace is $GIT_COMMIT"
-                echo "Current TAG is $tag"
+                echo "Workspace is $WORKSPACE"
+                echo "Current TAG is ${env.GIT_COMMIT}"
                 dir("$WORKSPACE") {
                     script {
                         docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
-                            def image = docker.build("r1nzler/emotions-api:$GIT_COMMIT")
+                            def image = docker.build("r1nzler/emotions-api:${env.GIT_COMMIT}")
                             image.push()
                         }
                     }
