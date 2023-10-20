@@ -1,9 +1,7 @@
 pipeline {
     agent any
     environment {
-        tag_long = sh(returnStdout: true, script: "git rev-parse HEAD")
-        tag_short = sh(returnStdout: true, script: "git rev-parse --short=10 HEAD")
-        tag_opt = sh(returnStdout: true, script: "git rev-parse --short=10 HEAD").trim()
+        tag = sh(returnStdout: true, script: "git rev-parse --short=10 HEAD")
     }
     stages {
         stage('Verify Branch') {
@@ -13,9 +11,7 @@ pipeline {
         }
         stage('Printing the TAG') {
             steps {
-                echo "The long tag is $tag_long"
-                echo "The short tag is $tag_short"
-                echo "The opt tag is $tag_opt"
+                echo "$tag"
             }
         }
         stage('Docker Build') {
