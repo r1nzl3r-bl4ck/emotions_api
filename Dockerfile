@@ -1,5 +1,5 @@
 
-FROM python:latest
+FROM python:3
 RUN mkdir /app
 COPY app.py /app
 COPY requirements.txt /
