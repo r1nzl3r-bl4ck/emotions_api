@@ -43,7 +43,9 @@ pipeline {
                 withCredentials([string(credentialsId: 'Github Connection', variable: 'GH_PAT')]) {
                     sh '''
                     echo "Updating kubernetes deployment with the image ${GIT_COMMIT:0:8}"
-                    echo "My PAT is ${GH_PAT}"
+                    git clone https://${GH_PAT}@github.com/r1nzl3r-bl4ck/k8s-apps.git
+                    cd k8s-apps/
+                    ls -l
                     '''
                 }
             }
