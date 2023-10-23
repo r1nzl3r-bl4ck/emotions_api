@@ -48,6 +48,10 @@ pipeline {
                     cd k8s-apps/emotions-api/
                     sed -E -i'' "s/(.*r1nzler\\/emotions-api:).*/\\1${GIT_COMMIT:0:8}/" 'deployment.yaml'
                     cat deployment.yaml
+                    echo "Pushing changes to github..."
+                    git add .
+                    git commit -m "[JENKINS BOT] Updating k8s deployment image tag."
+                    git push origin main
                     '''
                 }
             }
