@@ -41,7 +41,7 @@ pipeline {
         stage('Update k8s Deployment') {
             steps {
                 sh '''
-                echo "Updating kubernetes deployment with the image ${GIT_COMMIT[0..7]}"
+                echo "Updating kubernetes deployment with the image ${GIT_COMMIT:0:7}"
                 '''
             }
         }
