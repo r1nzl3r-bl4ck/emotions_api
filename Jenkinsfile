@@ -46,7 +46,7 @@ pipeline {
                     rm -rf k8s-apps/
                     git clone https://${GH_PAT}@github.com/r1nzl3r-bl4ck/k8s-apps.git
                     cd k8s-apps/emotions-api/
-                    sed -E -i'' "s/(.*r1nzler\\/emotions-api:).*/\1${GIT_COMMIT:0:8}/" 'deployment.yaml'
+                    sed -E -i'' "s/(.*r1nzler\\/emotions-api:).*/\\1${GIT_COMMIT:0:8}/" 'deployment.yaml'
                     cat deployment.yaml
                     '''
                 }
