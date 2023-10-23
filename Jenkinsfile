@@ -38,6 +38,13 @@ pipeline {
                 // ''')
             }
         }
+        stage('Update k8s Deployment') {
+            steps {
+                sh '''
+                echo "Updating kubernetes deployment with the image ${env.GIT_COMMIT[0..7]}"
+                '''
+            }
+        }
     }
 }
 
