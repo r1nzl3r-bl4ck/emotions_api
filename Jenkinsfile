@@ -44,8 +44,9 @@ pipeline {
                     sh '''
                     echo "Updating kubernetes deployment with the image ${GIT_COMMIT:0:8}"
                     git clone https://${GH_PAT}@github.com/r1nzl3r-bl4ck/k8s-apps.git
-                    cd k8s-apps/
-                    ls -l
+                    cd k8s-apps/emotions-api/
+                    sed -E -i'' "s/(.*r1nzler\/emotions-api:).*/\1${GIT_COMMIT:0:8}/" 'deployment.yaml'
+                    cat deployment.yaml
                     '''
                 }
             }
