@@ -40,9 +40,12 @@ pipeline {
         }
         stage('Update k8s Deployment') {
             steps {
-                sh '''
-                echo "Updating kubernetes deployment with the image ${GIT_COMMIT:0:8}"
-                '''
+                withCredentials([string(credentialsId: 'Github Connection', variable: 'GH_PAT')]) {
+                    sh '''
+                    echo "Updating kubernetes deployment with the image ${GIT_COMMIT:0:8}"
+                    echo "My PAT is ${GH_PAT}"
+                    '''
+                }
             }
         }
     }
