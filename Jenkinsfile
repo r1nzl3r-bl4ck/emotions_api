@@ -43,6 +43,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'Github Connection', variable: 'GH_PAT')]) {
                     sh '''
                     echo "Updating kubernetes deployment with the image ${GIT_COMMIT:0:8}"
+                    rm -rf k8s-apps/
                     git clone https://${GH_PAT}@github.com/r1nzl3r-bl4ck/k8s-apps.git
                     cd k8s-apps/emotions-api/
                     sed -E -i'' "s/(.*r1nzler\\/emotions-api:).*/\1${GIT_COMMIT:0:8}/" 'deployment.yaml'
