@@ -6,6 +6,12 @@ pipeline {
                 echo "$GIT_BRANCH"
             }
         }
+        stage('SonarQube Analysis') {
+            def scannerHome = tool 'SonarScanner';
+            withSonarQubeEnv() {
+              sh "${scannerHome}/bin/sonar-scanner"
+            }
+        }
         stage('Docker Build') {
             steps {
                 sh(script: 'docker images -a')
