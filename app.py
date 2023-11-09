@@ -1,7 +1,10 @@
 from flask import Flask, url_for, jsonify
 from random import randint
+from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)   
+csrf = CSRFProtect()
+csrf.init_app(app)
 
 @app.route('/ad_stats/<ad_id>', methods = ['GET'])
 def api_ad_stats(ad_id):
