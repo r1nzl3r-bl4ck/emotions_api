@@ -38,7 +38,7 @@ To build the docker image run:
 
 `docker build -t emotions-api .`
 
-NOTE: You must be in the same directory as the Dockerfile
+NOTE: You must be in the same directory as the Dockerfile.
 
 ###### Run
 
