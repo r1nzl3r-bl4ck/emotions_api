@@ -15,7 +15,7 @@ def api_ad_stats(ad_id):
         'num_views' : views,
         'num_contacts' : contacts,
         'emoji' : emoji_calculator(views),
-        'version' : '3.0'
+        'version' : '4.0'
     }
 
     resp = jsonify(ad_data)
